@@ -1,0 +1,326 @@
+FUNCTIONS LESSON
+
+#We have already learned about one function, called print. We know that we call print by using this syntax:
+$print(something_to_print)
+#We’ll name this function greet_customer. In order to call a function, we use the syntax function_name(). The parentheses are important! They make the code inside the function run.
+$def sing_song():
+     $print("You may say I'm a dreamer")
+     $print("But I'm not the only one")
+     $print("I hope some day you'll join us")
+     $print("And the world will be as one")
+#call the function sing_song() below:
+$sing_song()
+#the function outputs the following:
+You may say I'm a dreamer
+But I'm not the only one
+I hope some day you'll join us
+And the world will be as one
+$def loading_screen():
+   print('This page is loading...')
+$loading_screen()
+#This function prints: This page is loading...
+#What if we wanted to call these three print statements again, except with a variable special? We can use parameters, which are variables that you can pass into the function when you call it.
+$def greet_customer(special_item):
+   $print("Welcome to Engrossing Grocers.")
+   $print("Our special is " + special_item + ".")
+   $print("Have fun shopping!")
+
+#In the definition heading for greet_customer(), the special_item is referred to as a formal parameter. This variable name is a placeholder for the name of the item that is the grocery’s special today. 
+#The value between the parentheses when we call the function (in this case, "peanut butter") is referred to as an argument of the function call. The argument is the information that is to be used in the execution of the function. 
+#Now, when we call greet_customer, we have to provide a special_item:
+
+$greet_customer("peanut butter")
+#the function above will now print 'peanut butter' where 'special item' was in the code
+
+-------------------------------------------
+
+PARAMETERS IN FUNCTIONS (argument is the value between parentheses)
+
+$def mult_two_add_three():
+  $number = 5
+  $print(number*2 + 3)
+  =13
+
+#Now, modify the function definition so that it has a parameter called number. Then delete the number = 5 assignment on the first line of the function.
+$def mult_two_add_three(number):
+  $print(number*2 + 3)
+
+#Call the new function  
+$mult_two_add_three(5)
+=13
+
+-------------------------------
+
+MULTIPLE PARAMETERS
+
+$def mult_x_add_y(number, x, y):
+  $print(number*x + y)
+
+#Call the function:
+$mult_x_add_y(1, 3, 1) 
+=4
+
+----------------------------------
+KEYWORD/POSITIONAL ARGUMENTS
+
+#Remember: numbers need to be converted to strings to be able to print!
+# Define create_spreadsheet():
+$def create_spreadsheet(title, row_count = 10):
+  $print("Creating a spreadsheet called "+ title + " with " + str(row_count) + " rows")
+
+# Call create_spreadsheet() below with the required arguments:
+$create_spreadsheet("Applications")
+= Creating a spreadsheet called Applications with 10 rows
+
+--------------------------------------
+
+RETURNS
+
+#Functions can also return a value to the user so that this value can be modified or used later. 
+#When there is a result from a function that can be stored in a variable, it is called a returned function value. We use the keyword return to do this.
+
+$def divide_by_four(input_number):
+    $return input_number/4
+
+#The program that calls divide_by_four can then use the result later:
+
+$result = divide_by_four(16)
+# result now holds 4
+
+$print("16 divided by 4 is " + str(result) + "!")
+=16 divided by 4 is 4!
+
+$result2 = divide_by_four(result)
+$print(str(result) + " divided by 4 is " + str(result2) + "!")
+=4 divided by 4 is 1!
+
+
+-
+
+#The function calculate_age in script.py creates a variable called age that is the difference between the current year, and a birth year, both of which are inputs of the function. 
+#Add a line to return age.
+$def calculate_age(current_year, birth_year):
+  $age = current_year - birth_year
+  $return current_year - birth_year
+
+#call calculate_age with values 2049 (current_year) and 1993 (birth_year) and save the value to a variable called my_age.
+$calculate_age(2049, 1993)
+$my_age = calculate_age(2049, 1993)
+
+#Call calculate_age with values 2049 (current_year) and 1953 (birth_year) and save the value to a variable called dads_age.
+$dads_age = calculate_age(2049, 1953)
+
+#Print the string "I am X years old and my dad is Y years old" to the console, with my_age where the X is and dads_age where the Y is.
+print("I am " + str(my_age) + " years old and my dad is "+ str(dads_age) + " years old")
+
+
+--------------------
+
+MULTIPLE RETURN VALUES
+
+#Sometimes we may want to return more than one value from a function. We can return several values by separating them with a comma:
+$def square_point(x_value, y_value):
+  $x_2 = x_value * x_value
+  $y_2 = y_value * y_value
+  $return x_2, y_2
+
+#This function takes in an x value and a y value, and returns them both, squared. 
+#We can get those values by assigning them both to variables when we call the function:
+
+$x_squared, y_squared = square_point(1, 3)
+$print(x_squared)
+$print(y_squared)
+
+#This will print:
+1
+9
+
+
+
+
+#Write a function called get_boundaries() that takes in two parameters, a number called target and a number called margin.
+#It should create two variables:
+#low_limit: target minus the margin
+#high_limit: margin added to target
+
+$def get_boundaries(target, margin):
+  $low_limit = target - margin
+  $high_limit = margin + target
+  $return low_limit, high_limit
+
+#Call the function on the target 100 with a margin of 20. 
+#Save the returned values to variables called low and high.
+
+$low, high = get_boundaries(100, 20)
+
+
+-----------------------------
+
+SCOPE
+
+#Variables defined outside the scope of a function may be accessible inside the body of the function,
+#but not the other way around
+
+#Now we have current_year globally defined = define current_year before defining the function!
+#Let’s make sure our function still works: 
+#print the value of calculate_age() with 1970 as the argument.
+
+$current_year = 2048
+$def calculate_age(current_year, birth_year):
+  $age = current_year - birth_year
+  $return age
+$print(current_year) 
+$print(calculate_age(2048, 1970))
+
+
+---------------
+
+REVIEW of FUNCTIONS
+#Define a function called repeat_stuff that takes in two inputs, stuff, and num_repeats.
+#For now, only put an empty print statement inside the function.
+
+$def repeat_stuff(stuff, num_repeats):
+  $print()
+
+#call repeat_stuff.
+#You can use the value "Row " for stuff and 3 for num_repeats.
+
+$repeat_stuff('Row ', 3)
+
+#Change the print statement inside repeat_stuff to a return statement instead.
+#It should return stuff*num_repeats.
+#Note: Multiplying a string just makes a new string with the old one repeated! For example:
+#"na"*6
+#results in the string "nananananana".
+
+$def repeat_stuff(stuff, num_repeats):
+  $return stuff * num_repeats
+
+#Give the parameter num_repeats a default value of 10:
+
+$def repeat_stuff(stuff, num_repeats=10):
+  $return stuff * num_repeats
+
+#Add repeat_stuff("Row ", 3) and the string "Your Boat. " together and save the result to a variable called lyrics.
+#big_string = small_string + another_small_string
+
+$lyrics = repeat_stuff('Row ', 3) + 'Your Boat. '
+
+#Create a variable called song and assign it the value of repeat_stuff called with the singular input lyrics.
+$song = repeat_stuff(lyrics)
+
+#Print song.
+$print(song)
+= Row Row Row Your Boat. Row Row Row Your Boat. 
+Row Row Row Your Boat. Row Row Row Your Boat. 
+Row Row Row Your Boat. Row Row Row Your Boat. 
+Row Row Row Your Boat. Row Row Row Your Boat. 
+Row Row Row Your Boat. Row Row Row Your Boat. 
+
+----------------------
+
+CHALLENGE
+
+# Write your tenth_power function here:
+$def tenth_power(num):
+  $return num**10
+# Uncomment these function calls to test your tenth_power function:
+$print(tenth_power(1))
+# 1 to the 10th power is 1
+$print(tenth_power(0))
+# 0 to the 10th power is 0
+$print(tenth_power(2))
+# 2 to the 10th power is 1024
+
+# Write your square_root function here:
+$def square_root(num):
+  $return num**0.5
+# Uncomment these function calls to test your square_root function:
+$print(square_root(16))
+# should print 4
+$print(square_root(100))
+# should print 10
+
+# Write your win_percentage function here:
+$def win_percentage(wins, losses):
+  $return (wins/(wins + losses)) * 100
+# Uncomment these function calls to test your win_percentage function:
+$print(win_percentage(5, 5))
+# should print 50
+$print(win_percentage(10, 0))
+# should print 100
+
+# Write your average function here:
+$def average(num1, num2):
+  $return (num1 + num2) / 2
+# Uncomment these function calls to test your average function:
+$print(average(1, 100))
+# The average of 1 and 100 is 50.5
+$print(average(1, -1))
+# The average of 1 and -1 is 0
+
+# Write your remainder function here:
+$def remainder(num1, num2):
+  $return (num1 * 2) % (num2/2)
+# Uncomment these function calls to test your remainder function:
+$print(remainder(15, 14))
+# should print 2
+$print(remainder(9, 6))
+# should print 0
+
+# Write your first_three_multiples function here
+$def first_three_multiples(num):
+  $print((num), (num*2), (num*3))
+  $return (num*3)
+# Uncomment these function calls to test your first_three_multiples function:
+$first_three_multiples(10)
+# should print 10, 20, 30, and return 30
+$first_three_multiples(0)
+# should print 0, 0, 0, and return 0
+
+# Write your tip function here:
+$def tip(total, percentage):
+$  return total * (percentage/100)
+# Uncomment these function calls to test your tip function:
+$print(tip(10, 25))
+# should print 2.5
+$print(tip(0, 100))
+# should print 0.0
+
+# Write your introduction function here:
+$def introduction(first_name, last_name):
+$  return last_name + ", " + first_name + " " + last_name
+# Uncomment these function calls to test your introduction function:
+$print(introduction("James", "Bond"))
+# should print Bond, James Bond
+$print(introduction("Maya", "Angelou"))
+# should print Angelou, Maya Angelou
+
+# Write your dog_years function here:
+$def dog_years(name, age):
+$  age = age * 7
+$  print(name + ", you are " + str(age) + " years old in dog years")
+$print(dog_years("Lola", 16))
+$print(dog_years("Baby", 0))
+
+
+# Create a function named lots_of_math(). 
+#This function should have four parameters named a, b, c, and d. 
+#The function should print 3 lines and return 1 value.
+#First, print the sum of a and b.
+#Second, print d subtracted from c.
+#Third, print the first number printed, multiplied by the second number printed.
+#Finally, return the third number printed mod a.
+$def lots_of_math(a, b, c, d):
+$ first = a + b
+$ second = c - d
+$  third = first * second
+$  print(first)
+$  print(second)
+$  print(third)
+$  return third % a
+# Uncomment these function calls to test your lots_of_math function:
+$print(lots_of_math(1, 2, 3, 4))
+# should print 3, -1, -3, 0
+$print(lots_of_math(1, 1, 1, 1))
+# should print 2, 0, 0, 0
